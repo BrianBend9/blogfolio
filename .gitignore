@@ -35,6 +35,9 @@ public/js
 # Vim temporary files
 *.swp
 
+# OS system hidden files
+*.DS_Store
+
 # Node Version Manager config file
 .nvmrc
 
