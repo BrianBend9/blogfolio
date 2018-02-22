@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const commonConfig = require('./webpack.config.common');
+const NG_ENV = process.env.NG_ENV = 'production'; 
 
 // Create production config based on common config file (i.e. merging properties)
 module.exports = Object.assign(
@@ -20,18 +21,18 @@ module.exports = Object.assign(
 
     // Adding loader and plugins for production to config
     commonConfig.module.rules.push(
-        {
-            test: /\.ts$/,
-            loaders: [
-                'angular2-template-loader',
-                'angular2-router-loader?aot=true&genDir=public/js/app'
-            ]
-        },
         // Loader required for ahead of time (AoT) compilation
         {
             test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
             loader: '@ngtools/webpack'
-        }
+        },
+
+        {
+            test: /\.ts$/,
+                loaders: [
+                    'angular2-template-loader',
+                ]
+        },
     ),
 
     commonConfig.plugins.push(
@@ -40,6 +41,11 @@ module.exports = Object.assign(
         new AngularCompilerPlugin({
             tsConfigPath: path.join(__dirname, 'tsconfig.aot.json'),
             entryModule: path.join(__dirname, 'assets', 'app', 'app.module#AppModule')
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NG_ENV': JSON.stringify(NG_ENV)
+            }
         })
     )
 );

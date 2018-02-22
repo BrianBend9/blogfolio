@@ -5,7 +5,8 @@ import { enableProdMode } from '@angular/core';
 
 import { AppModule } from './app.module';
 
-if(process.env.NODE_ENV === "production") {
+// Check global variable defined in webpack prod config for production flag
+if(process.env.NG_ENV === "production") {
     enableProdMode();
 }
 
