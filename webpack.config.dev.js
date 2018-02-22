@@ -25,7 +25,12 @@ module.exports = Object.assign(
             loaders: [
                 'awesome-typescript-loader',
                 'angular2-template-loader',
-                'angular2-router-loader'
+            ]
+        },
+        {
+            test: /\.(ts|js)$/,
+            loaders: [
+                'angular-router-loader'
             ]
         }
     ),
