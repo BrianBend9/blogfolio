@@ -9,7 +9,7 @@ module.exports = Object.assign(
 
     commonConfig,
 
-    // Adding devtool, and chunkFilename properties to config
+    // Add devtool, and chunkFilename properties to config
     {devtool: 'cheap-module-eval-source-map'},
 
     {output: 
@@ -19,6 +19,7 @@ module.exports = Object.assign(
         }
     },
 
+    // Add loaders to config
     commonConfig.module.rules.push(
         {
             test: /\.ts$/,
@@ -27,6 +28,7 @@ module.exports = Object.assign(
                 'angular2-template-loader',
             ]
         },
+
         {
             test: /\.(ts|js)$/,
             loaders: [
@@ -35,6 +37,7 @@ module.exports = Object.assign(
         }
     ),
 
+    // Add development server BrowerSync config
     commonConfig.plugins.push(
         new BrowserSyncPlugin({
             host: '0.0.0.0',
