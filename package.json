@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently -c \"green,yellow,blue\" \"npm run build\" \"NODE_ENV=development nodemon ./bin/www\"",
+    "start": "concurrently -c \"green,yellow,blue\" \"npm run build\" \"NODE_ENV=development DEBUG=mean-app:* nodemon ./bin/www\"",
     "start:prod": "npm run build:prod && NODE_ENV=production node ./bin/www",
     "build": "del public/js/app 'assets/app/*.js' 'assets/app/*.js.map' 'assets/app/*.json' && webpack --config webpack.config.dev.js --progress --profile --watch",
     "build:prod": "del public/js/app && ngc -p tsconfig.json && webpack --config webpack.config.prod.js --progress --profile --bail && del 'public/js/app/**/*.js' 'public/js/app/**/*.js.map' '!public/js/app/bundle.js' '!public/js/app/*.chunk.js' 'assets/app/**/*.ngfactory.ts' 'assets/app/**/*.shim.ts'"
