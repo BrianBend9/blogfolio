@@ -6,7 +6,8 @@
     "start": "concurrently -c \"green,yellow,blue\" \"npm run build\" \"NODE_ENV=development DEBUG=mean-app:* nodemon ./bin/www\"",
     "start:prod": "npm run build:prod && NODE_ENV=production node ./bin/www",
     "build": "del public/js/app 'assets/app/*.js' 'assets/app/*.js.map' 'assets/app/*.json' && webpack --config webpack.config.dev.js --progress --profile --watch",
-    "build:prod": "del public/js/app && ngc -p tsconfig.json && webpack --config webpack.config.prod.js --progress --profile --bail && del 'public/js/app/**/*.js' 'public/js/app/**/*.js.map' '!public/js/app/bundle.js' '!public/js/app/*.chunk.js' 'assets/app/**/*.ngfactory.ts' 'assets/app/**/*.shim.ts'"
+    "build:prod": "del public/js/app && ngc -p tsconfig.json && webpack --config webpack.config.prod.js --progress --profile --bail && del 'public/js/app/**/*.js' 'public/js/app/**/*.js.map' '!public/js/app/bundle.js' '!public/js/app/*.chunk.js' 'assets/app/**/*.ngfactory.ts' 'assets/app/**/*.shim.ts'",
+    "lint": "./node_modules/.bin/tslint -p tsconfig.json -c tslint.json"
   },
   "dependencies": {
     "@angular/animations": "5.2.5",
@@ -49,6 +50,8 @@
     "html-loader": "0.5.5",
     "nodemon": "1.15.0",
     "raw-loader": "0.5.1",
+    "tslint": "5.9.1",
+    "tslint-angular": "1.1.1",
     "typescript": "2.6.2",
     "webpack": "3.11.0"
   },
