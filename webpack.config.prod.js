@@ -39,7 +39,7 @@ module.exports = Object.assign(
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({ sourceMap: false }),
         new AngularCompilerPlugin({
-            tsConfigPath: path.join(__dirname, 'tsconfig.aot.json'),
+            tsConfigPath: path.join(__dirname, 'tsconfig.json'),
             entryModule: path.join(__dirname, 'assets', 'app', 'app.module#AppModule')
         }),
         new webpack.DefinePlugin({
