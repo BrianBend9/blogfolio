@@ -43,7 +43,7 @@ module.exports = Object.assign(
             host: '0.0.0.0',
             port: process.env.DEVSERVER_PORT,
             proxy: `http://0.0.0.0:${process.env.PORT}`,
-            files: ['assets/app/*.html, assets/app/*.css']
+            files: ['assets/app/*.html', 'assets/app/*.css', 'assets/app/*.js', 'assets/app/*.map']
         })
     )
 
