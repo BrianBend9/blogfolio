@@ -29,8 +29,12 @@ node_modules
 # Debug log from npm
 npm-debug.log
 
-# Compiled angular js app in public foler
+# Compiled angular files 
 public/js
+assets/app/*.js
+asstes/app/*.js.map
+assets/app/*.json
+assets/app/*.metadata.json
 
 # Vim temporary files
 *.swp
