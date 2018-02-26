@@ -51,6 +51,7 @@
     "express": "4.15.5",
     "hbs": "4.0.1",
     "mongoose": "5.0.7",
+    "mongoose-unique-validator": "2.0.0",
     "morgan": "1.9.0",
     "rxjs": "5.5.6",
     "serve-favicon": "2.4.5",
