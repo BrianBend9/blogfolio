@@ -1,5 +1,5 @@
 {
-  "name": "mean-app-starter",
+  "name": "blogfolio",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -16,9 +16,18 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["eslint", "git add"],
-    "*.ts": ["tslint", "git add"],
-    "*.css": ["csslint", "git add"]
+    "*.js": [
+      "eslint",
+      "git add"
+    ],
+    "*.ts": [
+      "tslint",
+      "git add"
+    ],
+    "*.css": [
+      "csslint",
+      "git add"
+    ]
   },
   "dependencies": {
     "@angular/animations": "5.2.5",
@@ -40,6 +49,7 @@
     "dotenv": "5.0.0",
     "express": "4.15.5",
     "hbs": "4.0.1",
+    "mongoose": "5.0.7",
     "morgan": "1.9.0",
     "rxjs": "5.5.6",
     "serve-favicon": "2.4.5",
