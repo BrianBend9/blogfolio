@@ -9,7 +9,7 @@
     "del:aot": "del 'public/js/app/**/*.js' 'public/js/app/**/*.js.map' '!public/js/app/bundle.js' '!public/js/app/*.chunk.js' 'assets/app/**/*.ngfactory.ts' 'assets/app/**/*.shim.ts'",
     "build": "npm run del && webpack --config webpack.config.dev.js --progress --profile --env.buildOnly",
     "build:watch": "npm run del && webpack --config webpack.config.dev.js --progress --profile --watch --env",
-    "build:aot": "del public/js/app && ngc -p tsconfig.json && webpack --config webpack.config.prod.js --progress --profile --bail && del:aot",
+    "build:aot": "del public/js/app && ngc -p tsconfig.json && webpack --config webpack.config.prod.js --progress --profile --bail && npm run del:aot",
     "tslint": "node_modules/.bin/tslint -p tsconfig.json -c tslint.json",
     "eslint": "node_modules/.bin/eslint *.js",
     "csslint": "node_modules/.bin/stylelint '**/*.css' '!public/**/*.css'",
