@@ -1,42 +1,48 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon'); /* eslint-disable-line no-unused-vars */
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const debug = require('debug')('blogfolio:db');
 
-var appRoutes = require('./routes/app');
+const appRoutes = require('./routes/app');
+const { connect } = require('./api');
+const { dbMeta, options } = require('./config');
+const { cors } = require('./middleware');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// CORS configuration (for situation where Angular 2 app is running
-// on a different server than backend)
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
-    next();
-});
+// Establish database connection
+connect(...dbMeta, options)
+  .then((db) => {
+    debug('Successfully connected to database');
+    app.locals.db = db.connection;
+  })
+  .catch((err) => {
+    debug(err);
+    process.exit(1);
+  });
+
+// Set allowed headers using cors middlware for every request.
+app.use(cors);
 
 app.use('/', appRoutes);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    // Render index in order to transfer control
-    // back to Angular application
-    res.render('index');
-});
+// Catch-all router handler that renders index only.
+// Renders index in order to transfer control back to Angular
+app.use((req, res, next) => res.render('index')); /* eslint-disable-line no-unused-vars */
 
 module.exports = app;
