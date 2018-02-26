@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently -c \"green,yellow,blue\" \"npm run build:watch\" \"NODE_ENV=development DEBUG=mean-app:* nodemon ./bin/www\"",
+    "start": "concurrently -c \"green,yellow,blue\" \"npm run build:watch\" \"NODE_ENV=development DEBUG=blogfolio:* nodemon ./bin/www\"",
     "start:prod": "npm run build:aot && NODE_ENV=production node ./bin/www",
     "del": "del public/js/app 'assets/app/*.js' 'assets/app/*.js.map' 'assets/app/*.json'",
     "del:aot": "del 'public/js/app/**/*.js' 'public/js/app/**/*.js.map' '!public/js/app/bundle.js' '!public/js/app/*.chunk.js' 'assets/app/**/*.ngfactory.ts' 'assets/app/**/*.shim.ts'",
@@ -42,6 +42,7 @@
     "@angular/platform-server": "^5.2.5",
     "@angular/router": "5.2.5",
     "@angular/upgrade": "5.2.5",
+    "bluebird": "3.5.1",
     "body-parser": "1.18.2",
     "cookie-parser": "1.4.3",
     "core-js": "2.5.3",
