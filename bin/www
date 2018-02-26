@@ -8,7 +8,7 @@ require('dotenv').config()
  */
 
 var app = require('../app');
-var debug = require('debug')('mean-app:server');
+var debug = require('debug')('blogfolio:server');
 var http = require('http');
 
 /**
