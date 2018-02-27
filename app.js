@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const debug = require('debug')('blogfolio:db');
 
-const appRoutes = require('./routes/app');
+const { posts, users } = require('./routes');
 const { connect } = require('./api');
 const { dbMeta, options } = require('./config');
 const { cors } = require('./middleware');
@@ -39,7 +39,8 @@ connect(...dbMeta, options)
 // Set allowed headers using cors middlware for every request.
 app.use(cors);
 
-app.use('/', appRoutes);
+app.use('/posts', posts);
+app.use('/users', users);
 
 // Catch-all router handler that renders index only.
 // Renders index in order to transfer control back to Angular
