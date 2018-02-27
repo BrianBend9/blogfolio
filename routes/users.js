@@ -24,13 +24,13 @@ router.route('/new')
 /* GET page to show one user */
 /* PUT update one user  */
 /* DELETE destroy one user  */
-router.route('/:titleSlug/:month/:year')
+router.route('/:id')
   .get(showUser)
   .put(updateUser)
   .delete(deleteUser);
 
 /* GET page to edit one user */
-router.route('/:titleSlug/:month/:year/edit')
+router.route('/:id/edit')
   .get(editUser);
 
 module.exports = router;
